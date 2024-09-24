@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+       
+       <legend> <h1 class="main-heading">Dynamic Resume Builder</h1></legend>
+       </fieldset>
+
+        <!-- Personal Details Section -->
+        <div class="section">
+            <h2>Personal Details</h2>
+            <label for="name">Full Name</label>
+            <input type="text" id="name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone">
+        </div>
+
+        <!-- Work Experience Section -->
+        <div class="section">
+            <h2>Work Experience</h2>
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title">
+
+            <label for="company-name">Company Name</label>
+            <input type="text" id="company-name">
+
+            <label for="work-duration">Duration (e.g., Jan 2020 - Present)</label>
+            <input type="text" id="work-duration">
+
+            <label for="work-description">Description</label>
+            <textarea id="work-description"></textarea>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section">
+            <h2>Education</h2>
+            <label for="degree">Degree</label>
+            <input type="text" id="degree">
+
+            <label for="school">School/University</label>
+            <input type="text" id="school">
+
+            <label for="graduation-year">Graduation Year</label>
+            <input type="text" id="graduation-year">
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2>Skills</h2>
+            <label for="skills">List your skills (comma-separated)</label>
+            <input type="text" id="skills">
+        </div>
+
+        <button onclick="generateResume()">Generate Resume</button>
+
+        <h2>Generated Resume:</h2>
+        <div id="resume-output"></div>
+    </div>
+    
+
+    <script>
+        function generateResume() {
+            // Get user input values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            const jobTitle = document.getElementById('job-title').value;
+            const companyName = document.getElementById('company-name').value;
+            const workDuration = document.getElementById('work-duration').value;
+            const workDescription = document.getElementById('work-description').value;
+
+            const degree = document.getElementById('degree').value;
+            const school = document.getElementById('school').value;
+            const graduationYear = document.getElementById('graduation-year').value;
+
+            const skills = document.getElementById('skills').value;
+
+            // Create the resume output dynamically
+            const resume = `
+                <h3>${name}</h3>
+                <p>Email: ${email}</p>
+                <p>Phone: ${phone}</p>
+                <hr>
+                <h4>Work Experience</h4>
+                <p><strong>${jobTitle}</strong> at ${companyName}</p>
+                <p>${workDuration}</p>
+                <p>${workDescription}</p>
+                <hr>
+                <h4>Education</h4>
+                <p>${degree} from ${school} (Graduation Year: ${graduationYear})</p>
+                <hr>
+                <h4>Skills</h4>
+                <p>${skills}</p>
+            `;
+
+            // Output the generated resume to the page
+            document.getElementById('resume-output').innerHTML = resume;
+        }
+    </script>
+    
+</body>
+</html>
